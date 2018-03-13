@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import pragatiblockchain.com.pragati2018.Arts;
+import pragatiblockchain.com.pragati2018.CustomAdapter;
 import pragatiblockchain.com.pragati2018.R;
 
 /**
@@ -27,16 +32,22 @@ import pragatiblockchain.com.pragati2018.R;
  */
 
 public class SearchFragment extends Fragment {
-    private static final int MY_BUTTON = 9000;
-
-    private Context mContext;
-
-    LinearLayout mRelativeLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, null);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        CustomAdapter adapter = new CustomAdapter(getActivity(), Arts.getObjectList());
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         return view;
     }
 }

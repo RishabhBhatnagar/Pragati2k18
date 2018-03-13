@@ -3,48 +3,50 @@ package pragatiblockchain.com.pragati2018;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Bhatnagar Rishabh on 3/11/2018.
  */
 
 public class Arts {
-    private String title;
-    private int info;
-    private int media;
-    private int like;
-    private int donate;
-    private int share;
 
-    public Arts(String title, int info, int media, int like, int donate, int share) {
-        this.title = title;
-        this.info = info;
-        this.media = media;
-        this.like = like;
-        this.donate = donate;
-        this.share = share;
-    }
+
+
+    private String title;
+    private int image;
 
     public String getTitle() {
         return title;
     }
 
-    public int getInfo() {
-        return info;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getMedia() {
-        return media;
+    public int getImage() {
+        return image;
     }
 
-    public int getLike() {
-        return like;
+    public void setImage(int image) {
+        this.image = image;
     }
 
-    public int getDonate() {
-        return donate;
+    public static List<Arts> getObjectList(){
+        List<Arts> dataModel = new ArrayList<>();
+        int[] images = getImages();
+        for(int i = 0; i<images.length; i++){
+            Arts art = new Arts();
+            art.setImage(images[i]);
+            art.setTitle("art no"+String.valueOf(i));
+            dataModel.add(art);
+        }
+        return dataModel;
     }
 
-    public int getShare() {
-        return share;
+    public static int[] getImages(){
+        int[] images = {R.drawable.heart, R.drawable.heart, R.drawable.heart, R.drawable.heart};
+        return images;
     }
 }
