@@ -1,6 +1,5 @@
 package pragatiblockchain.com.pragati2018;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import pragatiblockchain.com.pragati2018.Fragments.ArtworkFragment;
 import pragatiblockchain.com.pragati2018.Fragments.ProfileFragment;
@@ -82,13 +80,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
         }
         return loadFragment(fragment);
-    }
-
-
-    public void imageView1(View view){
-        Toast.makeText(this, "imageView1", Toast.LENGTH_SHORT).show();
-    }
-    public void imageView2(View view){
-        Toast.makeText(this, "imageView2", Toast.LENGTH_SHORT).show();
     }
 }
