@@ -75,12 +75,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch(item.getItemId()){
             case R.id.navigation_artwork:
                 fragment = new ArtworkFragment();
+                button.setVisibility(View.VISIBLE);
                 break;
             case R.id.navigation_profile:
                 fragment = new ProfileFragment();
+                button.setVisibility(View.GONE);
                 break;
             case R.id.navigation_search:
                 fragment = new SearchFragment();
+                button.setVisibility(View.GONE);
                 break;
         }
         return loadFragment(fragment);
