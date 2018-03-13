@@ -1,1 +1,1 @@
-dynamically added cardview
+onclick in a cardview handled.

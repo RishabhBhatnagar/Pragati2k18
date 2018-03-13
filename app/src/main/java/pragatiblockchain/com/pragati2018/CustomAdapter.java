@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,9 +20,11 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     private List<Arts> objectList;
     private LayoutInflater layoutInflater;
+    private Context context;
     public CustomAdapter(Context context, List<Arts> objectList){
         layoutInflater = LayoutInflater.from(context);
         this.objectList = objectList;
+        this.context = context;
     }
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,9 +34,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder holder, int position) {
+    public void onBindViewHolder(CustomViewHolder holder, final int position) {
         Arts current = objectList.get(position);
         holder.setData(current, position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -47,6 +56,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         private ImageView arts;
         private int position;
         private Arts currentObject;
+        
         public CustomViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
